@@ -1,0 +1,29 @@
+{
+  "name": "environment-stats",
+  "version": "0.0.1",
+  "description": "A small app for probing environment endpoints to get their deployed versions",
+  "main": "environment-stats.js",
+  "scripts": {
+    "start": "node environment-stats.js"
+  },
+  "dependencies": {
+  },
+    "express": "^4.15.3",
+    "request": "^2.81.0",
+    "request-debug": "^0.2.0",
+    "xml2js": "^0.4.17",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.10",
+    "async": "^2.5.0"
+  "engines": {
+    "node": "4.0.0"
+  },
+  "keywords": [
+    "node",
+    "tableau",
+    "environments",
+    "sandbox"
+  ],
+  "author": "Eric Shamay"
+}
+
