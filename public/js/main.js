@@ -1,15 +1,5 @@
 $(document).ready(function() {                   
 
-	var keys = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'Ab', 'Bb', 'Db', 'Eb', 'Gb'];
-
-	var scaleBb = ['A', 'Bb', 'C', 'D', 'Eb', 'F', 'G'];
-	var scaleEb = ['Ab', 'Bb', 'C', 'D', 'Eb', 'F', 'G'];
-
-	var chooseRandom = function(list) {
-		var i = Math.floor(Math.random() * list.length);
-		return list[i];
-	}
-
 	var getQualities = function() {
 		var qualities = [''];
 		if ($('#minor-quality').is(":checked")) {
@@ -31,16 +21,13 @@ $(document).ready(function() {
 	}
 
 	var displayScore = function() {
-		var score = [];
 		var numBars = parseInt($('#num-bars').val());
 
-		for (var i=0;i<numBars;i++) {
-			var key = chooseRandom(keys);
-			var quality = chooseRandom(getQualities());
-			score.push(key+quality);
-		}
+		$.post('/score/random', { qualities: getQualities(), numBars: numBars })
+			.done(function(data) {
+			$('#display').html(data.join('  |  '));
+		});
 
-		$('#display').html(score.join('  |  '));
 	}
 
 	$('#num-bars').val('16');
